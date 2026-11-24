@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('destinos', function (Blueprint $table) {
             $table->id();
+            $table->string('ciudad');
+            $table->text('descripcion')->nullable();
             $table->timestamps();
         });
     }

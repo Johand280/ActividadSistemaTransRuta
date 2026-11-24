@@ -13,7 +13,20 @@ return new class extends Migration
     {
         Schema::create('rutas', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('origen_id')
+                ->constrained('destinos')
+                ->restrictOnDelete();
+
+            $table->foreignId('destino_id')
+                ->constrained('destinos')
+                ->restrictOnDelete();
+
+            $table->decimal('distancia', 8, 2);
+
             $table->timestamps();
+
+            $table->unique(['origen_id', 'destino_id']);
         });
     }
 
